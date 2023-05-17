@@ -10,6 +10,11 @@ class SettingsService {
 
   /// Loads the User's last saved server value
   String server() {
+    bool CheckValue =  _sharedPreferences.containsKey('server');
+    if (CheckValue == false) {
+      return 'https://api.example.com/';
+    }
+
     String server = _sharedPreferences.getString('server')!.trim();
     if (server.length == 0) {
       return 'https://api.example.com/';
